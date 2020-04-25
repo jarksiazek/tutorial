@@ -66,7 +66,7 @@ git log -Sfunction_name #Only show commits adding or removing code matching the 
 
 ### Removing Commits ###
 ```bash
-git commit --amend
+git commit --amend #
 
 ```
 
