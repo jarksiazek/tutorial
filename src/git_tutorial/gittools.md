@@ -150,4 +150,34 @@ iss53
 $ git branch --no-merge #list of branches not merged yet into the branch where you are on /git branch -d testing -> fail
 testing
 ```
-### BRANCHING WORKFLOWS###
+### REMOTE BRANCH ###
+Create a new branch from remote
+```bash
+$ git checkout -b test2 origin/master #new branch "test2" selected from "origin/master"
+Switched to a new branch 'test2'  
+ ```
+Send a local branch to remote
+```bash
+& git branch -u origin/test2 #"-u" set upstream to remote
+Branch test2 set up to track remote branch test2 from origin.
+ ```
+Tracking branch info
+```bash
+& git branch -vv
+iss53       7e424c3 [origin/iss53: ahead 2] forgot the brackets #2 commits not pushed  
+master      1ae2a45 [origin/master] deploying index fix
+*serverfix  f8674d9 [teamone/server-fix-good: ahead 3, behind 1] this should do it   
+testing     5ea463a trying something new #not trackin on remote
+ ```
+Delete 
+```bash
+$ git push origin --delete feature
+To https://github.com/schacon/simplegit  
+- [deleted]         feature
+```
+### REBASING ###
+Create a new branch from remote
+```bash
+$ git checkout -b test2 origin/master #new branch "test2" selected from "origin/master"
+Switched to a new branch 'test2'  
+ ```
