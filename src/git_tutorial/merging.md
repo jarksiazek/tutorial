@@ -20,3 +20,8 @@ $ git rebase master
 First, rewinding head to replay your work on top of it... 
 Applying: added staged command
 ```
+
+### MERGING TIPS ###
+```bash
+$ git merge --abort //revert back to stage before marging
+```

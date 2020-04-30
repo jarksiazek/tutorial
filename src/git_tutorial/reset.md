@@ -8,6 +8,4 @@
 
 - updating the working directory (--hard)
     * git reset --hard HEAD~
-
-### Squash ###
-test2
+    * git reset --hard [SHA-1] 
