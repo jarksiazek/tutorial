@@ -1,4 +1,6 @@
-## MERGING 
+# Merging #
+### IMPORTANT  
+
 ### FEATURE -> MASTER ###
 ```bash
 #Before it MASTER -> FEATURE / MASTER -> FEATURE - REBASING
