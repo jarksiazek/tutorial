@@ -3,8 +3,8 @@
 * [Log]()
 * [Stash]()
 * [Squash]()
-* [Merging](src/git/merging.md)
-* [Rebasing](src/git/rebasing.md)
+* [Merging](src/01_git/merging.md)
+* [Rebasing](src/01_git/rebasing.md)
 * [Squash]()
 * [Reset]()
 * [Revert]()
@@ -15,3 +15,5 @@
 * [Custom shortcuts]()
 
 ### DESIGN PATTERNS
+
+<span style="color:red">cardinals</span> 
