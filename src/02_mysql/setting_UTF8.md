@@ -1,45 +1,31 @@
 # SETTING UTF8 #
-* 
-* types
-    * B-tree 
-        * default (almost all databases)
-        * most popular
-        * leaf rows are stored 
-        * supports single lookups
-        * supports range lookups
-        * supports scanning in order (sorted access)
-    * Hash
-        * special purpose
-        * supports single lookups
-        * does not support ordered access, bulk access, scanning
-    * Log-Structure Merge
-    * Other (full-text, spatial, skiplist)
- 
+### **NOTE** ###
 
-* goals
-    * read less data
-    * read in bulk
-    
-### IMPORTANT COMMANDS ###
-* show indexes
-```bash
-SHOW INDEX FROM statement_of_work_snapshots;
+My sql has default encoding - latin1
+
+* use commend to check it: 
+```bash 
+mysql> SHOW VARIABLES WHERE Variable_name LIKE 'character\_set\_%' OR Variable_name LIKE 'collation%';
+
++--------------------------+--------------------+
+| Variable_name            | Value              |
++--------------------------+--------------------+
+| character_set_client     | latin1             |
+| character_set_connection | latin1             |
+| character_set_database   | latin1             | <here should be utf8mb4
+| character_set_filesystem | binary             | 
+| character_set_results    | latin1             |
+| character_set_server     | utf8mb4            |
+| character_set_system     | utf8               |
+| collation_connection     | latin1_swedish_ci  |
+| collation_database       | latin1_swedish_ci  |
+| collation_server         | latin1_swedish_ci  | <here should be utf8mb4_unicode_ci
++--------------------------+--------------------+
 ```
 
-* drop indexes with name 'account_id'
-```bash
-ALTER TABLE statement_of_work_snapshots DROP INDEX account_id;
-```
+* remember to set correct information when database is being created 
 
-* explain command
+1. Docker
 ```bash
-EXPLAIN SELECT * FROM statement_of_work_snapshots where account_id = '0000000001';
+λ docker run --name sow-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=StatementOfWorkLocal -p 3306:3306 -d mysql:5.7  --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 ```
-
-* explain command with more data 
-```bash
-EXPLAIN FORMAT=JSON SELECT * FROM statement_of_work_snapshots where account_id = '0000000001';
-```
-
-### MULTI COLUMNS INDEX ###
-https://dev.mysql.com/doc/refman/8.0/en/multiple-column-indexes.html    

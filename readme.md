@@ -15,5 +15,3 @@
 * [Custom shortcuts]()
 
 ### DESIGN PATTERNS
-
-<span style="color:red">cardinals</span> 

@@ -1,6 +1,7 @@
 # VUE RESOURCE #
 ### Links ###
-https://router.vuejs.org/
+https://router.vuejs.org/  
+https://github.com/vuejs/vue-router
 ### npm ###
 ```bash
 npm install --save vue-router
