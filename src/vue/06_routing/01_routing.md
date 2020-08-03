@@ -15,7 +15,7 @@ import { routes } from './route'
 
 Vue.use(VueRouter)
 
-const router = VueRouter({
+const router = new VueRouter({
     routes, //routes : routes
     mode: 'history' //to remove # in url
 })

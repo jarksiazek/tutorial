@@ -11,7 +11,22 @@ docker exec -it sow-mysql bash
 mysql -uroot -p
 ```
 
-* srat mysql
+* start mysql
 ```bash
 docker exec -it sow-mysql mysql -uroot -p
+``` 
+
+* create dump from docker 
+```bash
+docker exec sow-mysql /usr/bin/mysqldump -u root --password=root StatementOfWorkLocal > c:/backup.sql
+``` 
+
+* create dump from remote docker 
+```bash
+docker exec sow-mysql /usr/bin/mysqldump -u root --password=root StatementOfWorkLocal > c:/backup.sql
+``` 
+
+* connecting to database
+```bash
+sudo docker run -it --rm mysql /bin/bash -c "mysql -hdevmerchantutilityrds.yell-devqaugc-aws.co.uk -umerchantutility --ssl-mode=DISABLED  -p devmerchantutilityrds "
 ``` 
