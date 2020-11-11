@@ -12,7 +12,11 @@ Service | Full-name |  Description | Pricing
 VPC | Virtual Private Cloud | isolated section of the Amazon Web Services | free
 NGW | NAT Gateway |  VPC component that allows communication between your VPC and the internet | free  
 EC2 | Amazon Elastic Compute Cloud | compute capacity in the cloud | cost per hour, varies base on (region, instance type, on-demand, spot, reserved, dedicated host, operating system linux/Windows), you are billed by the second with minimum of 60 seconds, you are billed for storage, data transfer, fixed public IP, load balancing, not pay when instance is stopped
-ELB | Elastic Load Balancer | Load Balancer | free, pay for resources (EC2) 
+EBS | Elastic Block Stock | Network drive you can attach to instance | per GB-month
+EFS | Elastic File System | NFS can be mounted on many EC2 | per GB-month
+ELB | Elastic Load Balancer | Load Balancer | free, pay for resources (EC2)
+S3 ||  | 
+S3 Glacier| S3 Glacier |secure, durable, and extremely low-cost Amazon S3 cloud storage | GB-month
 Beanstalk | Elastic Beanstalk | developer centric view of deploying | free, pay for resources
 CloudFormation | CloudFormation | Infrastructure as Code | service is free, pay for resources      
    

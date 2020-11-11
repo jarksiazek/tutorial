@@ -24,6 +24,4 @@ https://aws.amazon.com/about-aws/global-infrastructure/regions_az/
 
 ![](.02_aws_fundamentals_images/aim1.jpg)
 
-* ONE IAM User per person 
-* ONE IAM Role per application
 

@@ -15,3 +15,6 @@
 * [Custom shortcuts]()
 
 ### DESIGN PATTERNS
+
+### AWS
+* [Basic](src/14_aws/00_basic.md) 
