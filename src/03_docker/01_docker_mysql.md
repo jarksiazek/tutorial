@@ -26,7 +26,26 @@ docker exec sow-mysql /usr/bin/mysqldump -u root --password=root StatementOfWork
 docker exec sow-mysql /usr/bin/mysqldump -u root --password=root StatementOfWorkLocal > c:/backup.sql
 ``` 
 
-* connecting to database
+* connecting to database mysql
 ```bash
 sudo docker run -it --rm mysql /bin/bash -c "mysql -hdevmerchantutilityrds.yell-devqaugc-aws.co.uk -umerchantutility --ssl-mode=DISABLED  -p devmerchantutilityrds "
 ``` 
+
+* connecting to database postgres
+```bash
+docker run -it --rm postgres bash -c "psql  -hassessment-tool-db-dev.ctzigj6l6m5w.eu-west-2.rds.amazonaws.com -U postgres -p 5432
+``` 
+
+* creating image and send it to ECR
+```bash
+mvnw package
+``` 
+```bash
+docker build -t assessment-tool .
+``` 
+```bash
+docker tag assessment-tool:latest 890769921003.dkr.ecr.eu-west-2.amazonaws.com/assessment-tool:latest
+```
+```bash
+docker push 890769921003.dkr.ecr.eu-west-2.amazonaws.com/assessment-tool:latest
+```
