@@ -1,0 +1,6 @@
+* Master Node
+  * kube-apiserve
+  * ETCD Cluster
+  * kube controller
+  * kube scheduler
+  
