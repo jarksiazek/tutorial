@@ -1,3 +1,0 @@
-# VUE STATE MANAGER #   
-
-### modules ### 
