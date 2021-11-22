@@ -3,8 +3,8 @@
 * [Log]()
 * [Stash]()
 * [Squash]()
-* [Merging](src/01_git/04_merging.md)
-* [Rebasing](src/01_git/05_rebasing.md)
+* [Merging](src/020_git/04_merging.md)
+* [Rebasing](src/020_git/05_rebasing.md)
 * [Squash]()
 * [Reset]()
 * [Revert]()
@@ -17,4 +17,4 @@
 ### DESIGN PATTERNS
 
 ### AWS
-* [Basic](src/14_aws/00_basic.md) 
+* [Basic](src/140_aws/00_basic.md) 
