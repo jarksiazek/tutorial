@@ -19,3 +19,12 @@
         - 
   ```
   
+* Container Logging
+   * ```kubectl logs -f <pod-name>``` - option for one contrainer in the pod
+   * ```kubectl logs -f <pod-name> <container-name>``` - option for multi contrainers in the pod  
+
+* Monitoring Metrics Server
+  * ```git clone http://github.com/kuberneter-incubator/metrics-server.git```
+  * ```kubectl create -f deploy/1.8+/```
+  * ```kubectl top node``` - getting some statictics from metrics server
+  * ```kubectl top pods``` - getting some statictics from metrics server
