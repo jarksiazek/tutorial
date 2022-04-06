@@ -28,3 +28,62 @@
   * ```kubectl create -f deploy/1.8+/```
   * ```kubectl top node``` - getting some statictics from metrics server
   * ```kubectl top pods``` - getting some statictics from metrics server
+
+###Pod Design
+* Labels,Selectors and Annotations
+ * ```
+   apiVersion: v1
+   kind: Pod
+   metadata:
+    name: simple-webapp
+    labels:
+     app:App1
+     function:Front-end
+   spec:
+    contrainers:
+    ...
+   ``` 
+  * ```kubectl get pod --selector app=App1```
+  * ```
+   apiVersion: apps/v1
+   kind: ReplicaSet
+   metadata:
+    name: simple-webapp
+    labels:
+     app:App1
+     function:Front-end
+   spec:
+    replicas: 3
+    selector:
+     matchLabels:
+      app: App1 # spec label -> template label
+     template:
+      metadata:
+       labels:
+        app: App1
+        function: Front-end
+       spec:
+        containers:
+        - name: simple-webapp
+          image: simple-webapp
+    ...
+   ``` 
+* Annotations
+ * additional information
+ 
+* Depolyment
+ * CREATE - ```kubectl create -f deployment.yaml```
+ * GET - ```kubectl get deployment```
+ * UPDATE from file - ```kubectl apply -f deployment.yaml```
+ * UPDATE from cmd - ```kubectl set image deployment nginx=nginx:1.9.1```
+ * STATUS - ```kubectl rollout status deployment```
+ * HISTORY - ```kubectl rollout history deployment```
+ * ROLLBACK - ```kubectl rollout undo deployment```
+ 
+* Deployment - update(rollaout) and rollback
+ * Dyployment stategies
+  * recreate - downtime (not default)
+  * rolling update - default
+ * ```kubectl rollout status deployment/myapp-deployment``` - status of rollout for deployment
+ * ```kubectl rollout history deployment/myapp-deployment``` - history of rollout for deployment
+ * ```kubectl rollout undo deployment/myapp-deployment``` - rollback
