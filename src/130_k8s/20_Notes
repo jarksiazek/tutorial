@@ -87,3 +87,82 @@
  * ```kubectl rollout status deployment/myapp-deployment``` - status of rollout for deployment
  * ```kubectl rollout history deployment/myapp-deployment``` - history of rollout for deployment
  * ```kubectl rollout undo deployment/myapp-deployment``` - rollback
+ 
+* Jobs
+ * ```
+    apiVersion: batch/v1
+    kind: Job
+    metadata:
+     name: math-add-job
+    spec:
+     completions: 3 #create 3 jobs and 3 pods
+     parallelism: 3 #optional, default is sequentional process 1 -> 2 -> 3
+     template:
+      spec:
+       containers:
+        - name: math-add
+          image: ubuntu
+          command: ['expr', '3', '+', '2']
+      restartPolicy: Naver    
+    ``` 
+ * CREATE JOB - ```kubectl create -f job-definition.yaml```   
+ * GET JOBS - ```kubectl get jobs```   
+ * GET OUTPUT - ```kubectl logs <pod-name>```   
+ * DELETE JOB - ```kubectl delete <job-name>```  
+ 
+* CRON JOB
+ * ```
+    apiVersion: batch/v1beta1
+    kind: CronJob
+    metadata:
+     name: reporting-cron-job
+    spec:
+     schedule: "*/1 * * * *"
+     jobTemplate:
+      spec:
+       completions: 3 #create 3 jobs and 3 pods
+       parallelism: 3 #optional, default is sequentional process 1 -> 2 -> 3
+       template:
+        spec:
+         containers:
+          - name: reporting-tool
+            image: reporting-tool
+         restartPolicy: Naver    
+    ``` 
+ * CREATE CRONJOB - ```kubectl create -f job-definition.yaml```   
+ * GET CRONJOBS - ```kubectl get cronjobs```  
+ 
+* SERVICES
+ * Types
+  * NodePort
+   * external access to the app 
+   * node (Node Port 30000-32767) -> Service (Port)-> PodPort (Target Port)
+   * ```apiVersion: v1
+        kind: Service
+        metadata:
+         name: app-service
+        spec:
+         type: NodePort
+         ports:
+          - targetPort: 80 #pod
+            port: 80 #service
+            nodePort: 3008 #node
+         selector:
+          app: myapp #data from POD metadata.labels
+          type: front-end
+    * Hitting app ```curl http://<service-ip>:<nodePort>```      
+  * ClusterIP
+   * connection between nodes and pods in the cluster (front->backend->db)
+   * ```apiVersion: v1
+     kind: Service
+     metadata:
+      name: back-end
+     spec:
+      type: ClousterIP
+      ports:
+       - targetPort: 80 #pod backend 
+         port: 80 #service port
+      selector:
+       app: myapp #data from POD metadata.labels
+       type: back-end
+  * LoadBalancer
