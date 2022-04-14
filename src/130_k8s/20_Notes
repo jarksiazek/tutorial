@@ -239,3 +239,34 @@
       ```
  * ```kubectl create ingress <ingress-name> --rule="host/path=service:port"```     
  * ```kubectl create ingress ingress-test --rule="wear.my-online-store.com/wear*=wear-service:80"```     
+ 
+ * Network polices
+  * ```apiVersion: networking.k8s.io/v1
+       kind: NetworkPolicy
+       metadata:
+        name: db-policy
+       spec:
+        podSelector:
+         matchLabels:
+          role: db
+        policyTypes:
+        - Ingress
+        - Egress
+        ingress:
+        - from:
+          - podSelector:
+             matchLabels:
+              name: api-pod
+            namespaceSelector:
+             matchLabels:
+              name: prod
+          ports:
+          - protocol: TCP
+            port: 3306
+         engress:
+         - to:
+           - ipBlock:
+              cidr: 192.168.6.10/32
+           ports:
+           - protocol: TCP
+             port: 80
