@@ -270,3 +270,66 @@
            ports:
            - protocol: TCP
              port: 80
+* Volume - mounting space for storing data
+ * ```...
+      spec:
+       containers:
+       - image: alpine
+         name: alpine
+         command: ["/bin/sh", "-c"]
+         args: ["shuf -i 0-100 -n >>/opt/number.out;"]
+         volumeMounts:
+         - mountPath: /opt
+           name: data-volume
+      volume:
+      - name: data-volume
+        hostPath:
+          path: /data
+          type: Directory```
+ * example for using aws elasticBlockStore as volume
+  * ```volumes:
+       - name: data-volume
+         awsElasticBlockStore:
+          volumeID: <volumeId>
+          fsType: ext4
+          ```
+* Persistent volumes
+ * ```apiVersion: v1
+      kind: PersistentVolume
+      metadata: 
+       name: pv-voll
+      spec: 
+       accessModes:
+        - ReadWriteOnce
+       capacity:
+        storage: 1Gi
+       awsElasticBlockStore:
+        volumeID: <>volum-id>
+        fsType: ext4
+* Persistent volume claims - connecting persistent volume with nodes
+ * ```apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata: 
+       name: myclaim
+      spec: 
+       accessModes:
+        - ReadWriteOnce
+       resources:
+        requests:
+         storage: 500Mi```
+ * adding pv claim to pod/deployment/replicaset
+  * ```apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+    - name: myfrontend
+      image: nginx
+      volumeMounts:
+      - mountPath: "/var/www/html"
+        name: mypd
+  volumes:
+    - name: mypd
+      persistentVolumeClaim:
+        claimName: myclaim```
