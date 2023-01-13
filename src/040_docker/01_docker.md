@@ -13,3 +13,7 @@
 * ```docker exec <docker-name> sh -c “ls && ps”``` - couple commands in one query
 * ```sudo nsenter``` - alternative program on the host machine   
 * ```sudo cntr attach <docker-name>``` - alternative program on the host machine 
+
+### DOCKER INSPECT
+* ```docker inspect <docker-name>``` - docker details
+* ```docker inspect –format ‘{{ json .State.Status  }}’ <docker-name>``` - docker details
