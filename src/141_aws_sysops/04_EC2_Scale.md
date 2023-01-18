@@ -44,4 +44,50 @@
 
 ### SNI - Server Name Indication
 * solves the problem of loading multiple SSL certificaes onto one web server 
-* 
+
+### Load Balancer Troubleshooting
+* all metrics are pushed to CloudWatch metrics
+ * Http codes
+ * Latencty
+ * RequestCount
+ * RequestCountPerTarget
+ * SurgeQueueLength - total requests that are pending routing yo a healthy instance. Helps to scale, max 1024
+ * SpilloverCount (nadmiar) - total number of requests that were rejected because the surge queue is full
+* logs 
+ * can be stored in S3 (time, client ip, latencies, request paths, response, trace id 
+
+### Target Groups Attributes
+* deregistration delay - draining time
+* slow start - warm-up time
+* load balancing algorithm
+ * Least Outstanding Requests - taking the instance with lower number of pending/unfinished requests
+ * Round Robin - equally choose the targets  
+ * Flow Hash - each tcp/udp connection is routed to a single target based on generated hash code
+* stickness options
+
+### Autoscaling Group
+* scale based on CloudWatch alarms (eg CPU or any custom metric)
+* target polices:
+ * target tracking scaling
+  * eg. average the ASG CPU to stay at 40 % 
+ * simple/ step scaling
+  * cloudwatch alarm (eg CPU > 70% then 2 units)    
+ * scheduled actions
+  * eg. Mon-Sun 2 units
+ * predictive scaling
+  * forcast load and schedule scaling ahead
+* good metrics:
+ * CPUUtilization, RequestCountPerTarget, Average Network In/Out, 
+
+### Lifecycle hooks
+* ASG - you can add custom hooks eg. after "pending" -> "pending:wait"
+
+### ASG Metrics
+* every 1 min
+* ASG-level metrics:
+ * GroupMinSize, GroupMaxSize, GroupDesiredSize
+ * GroupServiceInstances, GroupPendingInstances, GroupStandbyInstances
+ * GroupTerminatingInstances, GroupTotalInstances
+* EC2-level
+ * basic every 5 mins
+ * detailed every 1 mins 
