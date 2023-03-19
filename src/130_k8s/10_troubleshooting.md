@@ -1,3 +1,20 @@
+### Node not ready
+* ```ssh worker-node``` - connect to worker node by ssh
+* ```service kublet status``` - get service status
+* ```systemclt daemon-reload``` - Reload the systemd manager configuration
+* ```systemclt restart kublet``` - restart kublet service
+* examples 
+  * https://www.youtube.com/watch?v=0FoASYTK7tA
+
+### Update cluster 
+* ```ssh worker-node``` - get into the worker node
+* ```kubeadm --version``` - check the version of the node
+* ```kubelet --version``` - check the kubelet version 
+* use this for upgrding worker and master nodes : https://v1-25.docs.kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
+
+### JOIN WORKER TO CLUSTER
+* ```kubeadm token create --print-join-command``` - control master node generate command and then use is on the worker node 
+
 ### Getting logs from node
 * https://kubernetes.io/docs/tasks/debug/debug-cluster/
 * connect to instance using ssm - ```aws ssm start-session i-0cfe219fca030a14a --region eu-west-2```
