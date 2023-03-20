@@ -10,19 +10,19 @@
     * ABAC Authorization 
     * Node Authorization 
     * Webhook Mode
-     
 
-* Commands
+* Commands 
   * ```kubectl create serviceaccount sa1```
   * ```kubectl get sa``` - list of service accounts 
 
-* KubeConfig
+* KubeConfig 
   * ```kubectl config -h``` - view config help
   * ```kubectl config view``` - view default context
   * ```kubectl config view --kubeconfig=my-custom-config``` - view custom context
   * ```kubectl config use-context prod-user@production``` - change context to prod-user@production 
+  * ```kubectl config current-context -- kubeconfig <config-file>``` - get current context 
 
-* Authorization
+* Authorization 
   * what can you do ```get```, ```delete```
   * Node - node requests
   * ABAC - Difficult to manage
@@ -40,5 +40,4 @@
   * ```kubectl describe rolebinding devuser-developer-binding``` 
   * ```kubectl auth can-i create depolyments``` 
   * ```kubectl auth can-i create depolyments --as dev-user``` 
-  * ```kubectl auth can-i create depolyments --as dev-user --namespace test``` 
-  * 
+  * ```kubectl auth can-i create depolyments --as dev-user --namespace test```

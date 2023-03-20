@@ -2,9 +2,11 @@
 alias k='kubectl'
 alias kg='kubectl get'
 alias kgpod='kubectl get pod'
+alias kgdep='kubectl get deployments'
 alias kgall=kubectl get --all-namespaces all
 alias kd='kubectl describe'
-alias kdp='kubectl describe pod'
+alias kdpod='kubectl describe pod'
+alias kddep='kubectl describe deployment'
 # kubectl apply
 alias kap='kubectl apply'
 # kubectl delete

@@ -1,24 +1,28 @@
-### GIT LOG ###
+### GIT LOG
+
 ```bash
 #one line logs
 git log --oneline
 git log --graph --all --decorate --oneline
 ```
 
-### LIST OF MERGED BRANCHES ###
+### LIST OF MERGED BRANCHES
+
 ```bash
 git branch -r --merged develop
 git branch -r --no-merged develop
 git branch -r --merged
 ```
 
-### REBASE ###
+### REBASE
+
 ```bash
 #on feature branch to tip of master
 git rebase master
 ```
 
-### CHERRY_PICK ###
+### CHERRY_PICK
+
 ```bash
 #one commit
 git cherry-pick d4dgd
@@ -30,7 +34,8 @@ git cherry-pick d4dgd -e
 git cherry-pick d4dgd..6d62392
 ```
 
-### CHERRY_PICK WITH CONFLICT ###
+### CHERRY_PICK WITH CONFLICT
+
 ```bash
 # 1) get commit
 git cherry-pick d4dgd
@@ -47,16 +52,19 @@ git cherry-pick --continue
 git cherry-pick --abort
 ```
 
-### DIFF PATCHES ###
+### DIFF PATCHES
+
 * share changes via files
-```bash
-#create diff file 
-git diff from-commit to-commit > output.diff
+  
+  ```bash
+  #create diff file 
+  git diff from-commit to-commit > output.diff
+  ```
 
 #apply diff file 
 git apply output.diff
-```
 
+```
 ### DELETE BRANCHES LOCAL ###
 ```bash
 # delete merged branch
@@ -66,7 +74,8 @@ git branch -d new_feature
 git branch -D new_feature
 ```
 
-### DELETE BRANCHES REMOTE ###
+### DELETE BRANCHES REMOTE
+
 ```bash
 #1st option - push empty local to remote
 git push origin :new_feature
@@ -76,12 +85,15 @@ git push --delete origin new_feature
 git push -d origin new_feature
 ```
 
-### PRUNE STALE BRANCHES ###
+### PRUNE STALE BRANCHES
+
 * remote all stale remote-tracking branches
 * stale branch - actual branch in the remote bas been deleted
-```bash
-git remote prune origin
-git remote prune origin --dry-run
+  
+  ```bash
+  git remote prune origin
+  git remote prune origin --dry-run
+  ```
 
 #prune and fetch
 git fetch --prune 

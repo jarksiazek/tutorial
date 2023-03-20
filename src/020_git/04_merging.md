@@ -1,7 +1,9 @@
-# Merging #
-### IMPORTANT  
+# Merging
 
-### FEATURE -> MASTER ###
+### IMPORTANT
+
+### FEATURE -> MASTER
+
 ```bash
 #Before it MASTER -> FEATURE / MASTER -> FEATURE - REBASING
 $ git checkout master #switch to master
@@ -10,12 +12,16 @@ $ git merge feature #merge fast-forward feature to master
 $ git push master #send changes to repo
 $ git branch -d feature #removing branch feature
 ```
-### MASTER -> FEATURE ###
+
+### MASTER -> FEATURE
+
 ```bash
 $ git checkout feature #switch to feature
 $ git merge master #updating feature
 ```
-### MASTER -> FEATURE - REBASING ###
+
+### MASTER -> FEATURE - REBASING
+
 ```bash
 $ git checkout feature #switch to feature
 $ git rebase master
@@ -23,7 +29,8 @@ First, rewinding head to replay your work on top of it...
 Applying: added staged command
 ```
 
-### MERGING TIPS ###
+### MERGING TIPS
+
 ```bash
 $ git merge --abort //revert back to stage before marging
 ```

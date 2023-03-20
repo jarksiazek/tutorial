@@ -1,26 +1,33 @@
-# Configuration #
-### Saving data in "etc/gitconfig" ###
+# Configuration
+
+### Saving data in "etc/gitconfig"
+
 ```bash
 git config --global user.name = {yourname}
 git config --global user.email = {youremail}
 //global config list 
 git config --list
 ```
-### Help ###
+
+### Help
+
 ```bash
 git help <verb>
 git <verb>  --help
 man git-<verb>
 ```
 
-### Initial local repo ###
+### Initial local repo
+
 ```bash
 # in project folder
 git init
 git add .
 git commit -m "inital commit"
 ```
-### Git Status  ###
+
+### Git Status
+
 ```bash
 # basic
 git status
@@ -28,7 +35,8 @@ git status
 git status -s 
 ```
 
-### Git Ignore   ###
+### Git Ignore
+
 ```bash
 # files ending on ".o" or ".a"
 *.[oa]
@@ -40,19 +48,22 @@ git status -s
 build/
 ```
 
-### Removing files ###
+### Removing files
+
 ```bash
 # removing file from tracking
 # add file to .gitignore
 git rm --cached <fileName>
 ```
 
-### File name changing ###
+### File name changing
+
 ```bash
 git mv originalFileName newFileName
 ```
 
-### History revision ###
+### History revision
+
 ```bash
 git log
 git log -p #Different between commits
@@ -64,54 +75,71 @@ git log --since=2.weeks
 git log -Sfunction_name #Only show commits adding or removing code matching the string
 ```
 
-### Removing Commits --Amend ###
+### Removing Commits --Amend
+
 ```bash
 git commit --amend #Correction of last commit 
 git reset HEAD <filename> #To unstage  
 ```
 
-### Remote Repository ###
+### Remote Repository
+
 Basic info about remote repo
+
 ```bash
 git remote #Name of servers with repo
 git remote -v #Name of servers with repo plus url info
 git remote add shortNam http://github.. # git remote add [skrót] [url]:
 ```
+
 Fetching from remote repo
+
 ```bash
 git fetch [remote-name]
 git pull #fetch + merge
 git push origin master #git push [name-remote-repo] [name-branch]
 git remote show origin #more info about remote repo
 ```
+
 Renaming remote repo
+
 ```bash
 git remote rename #changing remote shot name
 ```
-### Tagging ###
+
+### Tagging
+
 Tag - important versions of project\
 Types: 
+
 * soft - pointing to the particular part of code
 * description - full object in database Git
 
 Getting tag info
+
 ```bash
 git tag #showig all project versions
 git tag -l 'v1.8.5' #showig all project versions with tag v1.8.5
 ```
+
 Description tag
+
 ```bash
 git tag -a v1.4 -m "my version 1.4" #creating descriptive tag 
 git show v1.4 #getting info about tagged version
 git tag -a v1.2 9fceb02 #adding tag to historic revision
 git checkout -b version2 v2.0.0  #Switched to a new branch 'version2' 
 ```
+
 Soft tag
+
 ```bash
 git tag v1.4-lw #creating soft tag 
 git show v1.4-lw #getting info about tagged version
 ```
-### Aliasing ###
+
+### Aliasing
+
 ```bash
 git config --global alias.co checkout
 git config --global alias.br branch
@@ -121,63 +149,81 @@ git config --global alias.unstage 'reset HEAD --' #Adding 2 'reset HEAD --' to c
 git config --global alias.visual "!gitk" #"!" adding alias to external program
 ```
 
-### HEAD ###
+### HEAD
+
 HEAD - place where you are in git tree
+
 ```bash
 git log --decorate #show where is HEAD
 git log --oneline --decorate --graph --all #log graph view
 ```
 
-### BRANCH MANAGEMENT ###
+### BRANCH MANAGEMENT
+
 ```bash
 $ git branch #current branches,  "*" - HEAD
 iss53
 * master
 testing
 ```
+
 ```bash
 $ git branch -v #last commmit for each branch
 iss53   93b412c fix javascript issue 
 * master  7a98805 Merge branch 'iss53'
 testing 782fd34 add scott to the author list in the readmes
 ```
+
 ```bash
 $ git branch --merge #list of branches already merged into the branch where you are on / list branches to delete
 iss53
 * master
 ```
+
 ```bash
 $ git branch --no-merge #list of branches not merged yet into the branch where you are on /git branch -d testing -> fail
 testing
 ```
-### REMOTE BRANCH ###
+
+### REMOTE BRANCH
+
 Create a new branch from remote
+
 ```bash
 $ git checkout -b test2 origin/master #new branch "test2" selected from "origin/master"
 Switched to a new branch 'test2'  
- ```
+```
+
 Send a local branch to remote
+
 ```bash
 & git branch -u origin/test2 #"-u" set upstream to remote
 Branch test2 set up to track remote branch test2 from origin.
- ```
+```
+
 Tracking branch info
+
 ```bash
 & git branch -vv
 iss53       7e424c3 [origin/iss53: ahead 2] forgot the brackets #2 commits not pushed  
 master      1ae2a45 [origin/master] deploying index fix
 *serverfix  f8674d9 [teamone/server-fix-good: ahead 3, behind 1] this should do it   
 testing     5ea463a trying something new #not trackin on remote
- ```
+```
+
 Delete 
+
 ```bash
 $ git push origin --delete feature
 To https://github.com/schacon/simplegit  
 - [deleted]         feature
 ```
-### REBASING ###
+
+### REBASING
+
 Create a new branch from remote
+
 ```bash
 $ git checkout -b test2 origin/master #new branch "test2" selected from "origin/master"
 Switched to a new branch 'test2'  
- ```
+```

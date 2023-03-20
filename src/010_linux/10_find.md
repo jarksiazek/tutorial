@@ -1,18 +1,6 @@
 # LINUX #
 
-* man -command help
-```bash
-man ls
-``` 
 
-* cd
-```bash
-cd folder
-cd c:/folder/subfolder
-cd ..  
-cd ../othersubfolder
-cd - #recently open folder
-``` 
 
 * df - show size
 -x(exclude) -h(human-readable)  
